@@ -22,11 +22,15 @@ const gameBoard = (() => {
 
   const checkForWinner = () => {
     const sayWinner = (winner) => {
-      div.textContent = `The winner is: ${winner}`;
-      cells.forEach((cell) => {
-        const newCell = cell;
-        newCell.classList.add("inactive");
-      });
+      if (winner === "tie") {
+        div.textContent = `Its a tie!`;
+      } else {
+        div.textContent = `The winner is: ${winner}`;
+        cells.forEach((cell) => {
+          const newCell = cell;
+          newCell.classList.add("inactive");
+        });
+      }
     };
 
     for (let i = 0; i < board.length; i += 3) {
@@ -36,6 +40,7 @@ const gameBoard = (() => {
         board[i] === board[i + 2]
       ) {
         sayWinner(board[i]);
+        return;
       }
     }
     for (let i = 0; i < 3; i += 1) {
@@ -45,13 +50,19 @@ const gameBoard = (() => {
         board[i] === board[i + 6]
       ) {
         sayWinner(board[i]);
+        return;
       }
     }
     if (board[0] !== "" && board[0] === board[4] && board[0] === board[8]) {
       sayWinner(board[0]);
+      return;
     }
     if (board[2] !== "" && board[2] === board[4] && board[2] === board[6]) {
       sayWinner(board[2]);
+      return;
+    }
+    if (!board.includes("")) {
+      sayWinner("tie");
     }
   };
 
