@@ -36,4 +36,9 @@ body {
   justify-content: center;
   align-items: center;
   font-size: calc(var(--cell-size) * 0.75);
+  cursor: pointer;
+}
+
+.cell:hover {
+  background-color: rgba(127, 255, 165, 0.265);
 }
