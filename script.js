@@ -41,7 +41,6 @@ const gameBoard = (() => {
     cells.forEach((cell, index) => {
       const newCell = cell;
       newCell.textContent = board[index];
-      newCell.classList.remove("inactive");
     });
   };
 
@@ -116,6 +115,10 @@ const gameBoard = (() => {
         currentMark = "X";
         board[i] = "";
         div.textContent = "";
+        cells.forEach((resetCell) => {
+          const newCell = resetCell;
+          newCell.classList.remove("inactive");
+        });
       });
       render();
     });
