@@ -16,6 +16,7 @@ html {
 body {
   min-height: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -26,6 +27,7 @@ body {
   grid-template-rows: repeat(3, auto);
   border: 3px solid;
   border-color: red;
+  margin: 20px 0;
 }
 
 .cell {
@@ -39,6 +41,14 @@ body {
   cursor: pointer;
 }
 
+.inactive {
+  pointer-events: none;
+}
+
 .cell:hover {
   background-color: rgba(127, 255, 165, 0.265);
+}
+
+.header {
+  height: 1rem;
 }
