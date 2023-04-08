@@ -124,7 +124,7 @@ const gameBoard = (() => {
     });
   });
 
+  render();
+
   return { render };
 })();
-
-gameBoard.render();
