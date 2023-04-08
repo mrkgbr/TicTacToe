@@ -51,4 +51,19 @@ body {
 
 .header {
   height: 1rem;
+  font-weight: bold;
+}
+
+.players {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+div.players {
+  width: 300px;
+}
+#info {
+  align-self: center;
+  height: 2rem;
 }

@@ -1,3 +1,28 @@
+const Player = (name) => {
+  const playerName = name;
+  return { playerName };
+};
+
+const players = ["", ""];
+
+const addPlayer = document.querySelector("#add-player");
+const form = document.querySelector("#player-form");
+const info = document.querySelector("#info");
+addPlayer.addEventListener("click", () => {
+  players[0] = Player(form["player-one"].value);
+  players[1] = Player(form["player-two"].value);
+  let playerOne = players[0].playerName;
+  let playerTwo = players[1].playerName;
+  if (playerOne === "") {
+    playerOne = "X";
+  }
+  if (playerTwo === "") {
+    playerTwo = "O";
+  }
+  info.textContent = `Active players: ${playerOne} and ${playerTwo} `;
+  console.log(players);
+});
+
 const gameBoard = (() => {
   const board = ["", "", "", "", "", "", "", "", ""];
   const cells = document.querySelectorAll(".cell");
@@ -25,7 +50,17 @@ const gameBoard = (() => {
       if (winner === "tie") {
         div.textContent = `Its a tie!`;
       } else {
-        div.textContent = `The winner is: ${winner}`;
+        if (winner === "X") {
+          if (players[0] !== "" && players[0].playerName !== "") {
+            div.textContent = `The winner is: ${players[0].playerName}`;
+          } else {
+            div.textContent = `The winner is: ${winner}`;
+          }
+        } else if (players[1] !== "" && players[1].playerName !== "") {
+          div.textContent = `The winner is: ${players[1].playerName}`;
+        } else {
+          div.textContent = `The winner is: ${winner}`;
+        }
         cells.forEach((cell) => {
           const newCell = cell;
           newCell.classList.add("inactive");
@@ -88,14 +123,5 @@ const gameBoard = (() => {
 
   return { render };
 })();
-
-const Player = (name, mark) => {
-  const sayName = () => console.log(`my name is ${name}`);
-  const sayMark = () => console.log(`my mark is ${mark}`);
-  return { sayName, sayMark };
-};
-
-const playerOne = Player("Player 1", "X");
-const playerTwo = Player("Player 2", "O");
 
 gameBoard.render();
